@@ -20,7 +20,7 @@ function appendPosts(posts) {
     htmlTemplate += /*html*/`
       <article>
       <img src="${getFeaturedImageUrl(post)}">
-        <h3>${post.title.rendered}</h3>
+        <h2>${post.title.rendered}</h2>
         <p>${post.content.rendered}</p>
       </article>
     `;
