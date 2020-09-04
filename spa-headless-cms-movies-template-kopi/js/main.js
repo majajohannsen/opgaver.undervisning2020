@@ -37,6 +37,7 @@ template += /*html*/`
 }
 console.log(template);
 document.querySelector("#movies-container").innerHTML = template; 
+showLoader(false);
 }
 
 // search functionality
