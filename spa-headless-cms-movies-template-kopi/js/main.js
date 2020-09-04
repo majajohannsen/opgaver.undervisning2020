@@ -28,6 +28,10 @@ template += /*html*/`
 
 <article>
   <h2>${movie.title.rendered}</h2>
+  <img src="${movie.acf.img}">
+  <h4>Description:</h4>
+  ${movie.excerpt.rendered}
+  <a href= "${movie.acf.trailer}">Trailer</a>
 </article>
 `;
 }
