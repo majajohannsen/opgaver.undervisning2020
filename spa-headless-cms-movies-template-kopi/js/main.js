@@ -6,14 +6,33 @@
 let _movies = [];
 
 // fetch all movies from WP
-function getMovies() {
+async function getMovies() {
   // TODO: fetch movies from wp headless and call appendMovies
   // https://movie-api.cederdorff.com/wp-json/wp/v2/posts?_embed
+  let response = await fetch(" https://movie-api.cederdorff.com/wp-json/wp/v2/posts?_embed");
+  let data = await response.json();
+  console.log(data); 
+  _movies = data;
+  appendMovies(_movies);
 }
+getMovies();
 
 // append movies to the DOM
 function appendMovies(movies) {
   // TODO: append movies to #movies-container
+let template = "";
+console.log(movies);
+
+for (const movie of movies) {
+template += /*html*/`
+
+<article>
+  <h2>${movie.title.rendered}</h2>
+</article>
+`;
+}
+console.log(template);
+document.querySelector("#movies-container").innerHTML = template; 
 }
 
 // search functionality
