@@ -31,7 +31,7 @@ template += /*html*/`
   <img src="${movie.acf.img}">
   <h4>Description:</h4>
   ${movie.excerpt.rendered}
-  <a href= "${movie.acf.trailer}">Trailer</a>
+  <a class="button" href= "${movie.acf.trailer}">Trailer</a>
 </article>
 `;
 }
@@ -43,17 +43,42 @@ showLoader(false);
 // search functionality
 function search(value) {
   // TODO: search functionality
+  console.log(value);
+  let searchValue = value.toLowerCase();
+  console.log(searchValue);
+  let resualt = [];
+  for (const movie of _movies) {
+    let title = movie.title.rendered.toLowerCase();
+    if(title.includes(searchValue)) {
+  resualt.push(movie);
+    }
+  }
+appendMovies(resualt);
 }
 
 // fetch all genres / categories from WP
-function getGenres() {
+async function getGenres() {
   // TODO: get categories from wp headless
   // https://movie-api.cederdorff.com/wp-json/wp/v2/categories
+  let response = await fetch("https://movie-api.cederdorff.com/wp-json/wp/v2/categories");
+  let data = await response.json();
+  console.log(data);
+  appendGenres(data);
 }
+
+getGenres();
 
 // append all genres as select options (dropdown)
 function appendGenres(genres) {
   // TODO: append categories to #select-genre
+  let htmlTemplate ="";
+
+  for (const genre of genres) {
+    htmlTemplate += /*html*/`
+<option value="${genre.id}">${genre.name}</option>
+`;
+  }
+  document.querySelector("#select-genre").innerHTML += htmlTemplate;
 }
 
 // genre selected event - fetch movies by selected category
