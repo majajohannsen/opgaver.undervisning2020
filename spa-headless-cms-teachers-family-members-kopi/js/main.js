@@ -64,7 +64,16 @@ function appendTeachers(teachers) {
   document.querySelector("#teachers-container").innerHTML = htmlTemplate;
 }
 
-function search(value) {
+function search(searchValue) {
+  console.log(searchValue);
+searchValue = searchValue.toLowerCase();
+let filteredTeachers = _teachers.filter(teacher => {
+  let name = teacher.title.rendered.toLowerCase();
+   return name.includes(searchValue)
+});
+appendTeachers(filteredTeachers);
+}
+/*
   console.log(value);
   let filteredTeachers = [];
   for (let teacher of _teachers) {
@@ -76,7 +85,7 @@ function search(value) {
 
   console.log(filteredTeachers);
   appendTeachers(filteredTeachers);
-}
+}; */ 
 
 // returns the source url of the featured image of given post or page
 function getFeaturedImageUrl(post) {
