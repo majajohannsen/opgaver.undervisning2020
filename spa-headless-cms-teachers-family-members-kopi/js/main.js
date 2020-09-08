@@ -4,36 +4,30 @@
 let _familyMembers = [];
 let _teachers = [];
 
-// ---------- Fetch data from data sources ---------- //
-
-/*
-Fetches post data from my headless cms
-*/
-function getPersons() {
-  fetch('http://headlesscms.cederdorff.com/wp-json/wp/v2/posts?_embed&categories=3')
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (persons) {
-      _familyMembers = persons;
-      appendPersons(_familyMembers);
-    });
+// ---------- Nedenunder laver jeg en arrow functions & bruger async for at fetche ---------- //
+async function getPersons() {
+let data = await fetch('http://headlesscms.cederdorff.com/wp-json/wp/v2/posts?_embed&categories=3').then(response => response.json());
+console.log(data);
+_familyMembers = data;
+appendPersons(data);
 }
+
 /*
 Appends json data to the DOM
 */
 function appendPersons(persons) {
   let htmlTemplate = "";
-  for (let index = 0; index < persons.length; index++) {
-    var person = persons[index];
-    htmlTemplate +=
-      '<article>' +
-      '<img src="' + getFeaturedImageUrl(person) + '">' +
-      '<h3>' + person.title.rendered + '</h3>' +
-      '<p>' + person.acf.age + 'years old</p>' +
-      '<p>Hair color:' + person.acf.hairColor + '</p>' +
-      '<p>Relation:' + person.acf.relation + '</p>' +
-      '</article>';
+  for (const person of persons) {
+    console.log(person);
+    htmlTemplate += /*html*/ `
+      <article> 
+      <img src="${getFeaturedImageUrl(person)}">
+      <h3>${person.title.rendered}</h3>
+      <p>${person.acf.age} years old</p>
+      <p>Hair color: ${person.acf.hairColor} </p>
+      <p>Relation: ${person.acf.relation}</p>
+      </article>
+      `;
   }
   document.querySelector("#persons").innerHTML = htmlTemplate;
 }
