@@ -11,7 +11,7 @@ spa.pageChange();
 }
 
 window.categorySelected = function (id) {
-
+movieService.getMoviesByCategory(id);
 }
 
 window.search = function (searchValue) {

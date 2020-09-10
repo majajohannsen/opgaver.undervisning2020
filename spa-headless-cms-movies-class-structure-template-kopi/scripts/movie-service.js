@@ -26,14 +26,15 @@ let data = await fetch ("https://movie-api.cederdorff.com/wp-json/wp/v2/posts?_e
   async getCategories() {
     let data = await fetch ("https://movie-api.cederdorff.com/wp-json/wp/v2/categories").then(response => response.json());
     console.log(data);
-    this.movies = data;
+    this.categories = data;
     this.appendCategories();
     
   }
 
-  getMoviesByCategory(categoryId) {
-
-  }
+ async getMoviesByCategory(categoryId) {
+let data = await fetch (`https://movie-api.cederdorff.com/wp-json/wp/v2/posts?categories=${categoryId}`).then(response => response.json());
+  this.appendMoviesByCategory(data);
+}
 
   appendMovies(movies) {
     let htmlTemplate = "";
