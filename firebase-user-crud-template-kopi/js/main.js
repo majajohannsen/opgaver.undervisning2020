@@ -72,13 +72,23 @@ function selectUser(id, name, mail) {
   nameInput.value = name;
   mailInput.value = mail;
   selectedUserId = id;
+
 }
 
 function updateUser() {
+  let nameInput = document.querySelector('#name-update');
+  let mailInput = document.querySelector('#mail-update');
 
+  let userToUpdate = {
+    name: nameInput.value,
+    mail: mailInput.value
+  };
+
+  userRef.doc(selectedUserId).update(userToUpdate);
 }
 
 // ========== DELETE ==========
 function deleteUser(id) {
+  userRef.doc(selectedUserId).delete();
 
 }
