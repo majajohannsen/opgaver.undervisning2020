@@ -32,8 +32,11 @@ let data = await fetch ("https://movie-api.cederdorff.com/wp-json/wp/v2/posts?_e
   }
 
  async getMoviesByCategory(categoryId) {
+   this.loader.show(false);
 let data = await fetch (`https://movie-api.cederdorff.com/wp-json/wp/v2/posts?categories=${categoryId}`).then(response => response.json());
   this.appendMoviesByCategory(data);
+  this.loader.show(false);
+
 }
 
   appendMovies(movies) {
