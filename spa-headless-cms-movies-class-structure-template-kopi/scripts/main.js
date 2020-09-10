@@ -1,9 +1,9 @@
 
 import Spa from "./spa.js"; 
-import Spa from "./movie-service.js";
+import MovieService from "./movie-service.js";
 
 let spa = new Spa("movies");
-let moviesService = new moviesService();
+let movieService = new MovieService();
 
 //functions in global variables
 window.pageChange = function () {
