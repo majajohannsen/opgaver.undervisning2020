@@ -8,9 +8,11 @@ class MovieService {
     this.loader = new Loader();
   }
 
-  getMovies() {
-
-  }
+ async getMovies() {
+let data = await fetch ("https://movie-api.cederdorff.com/wp.json/wp/v2/posts?_embed").then(response => response.json());
+  console.log(data);
+  this.movies = data;
+}
 
   getCategories() {
 
