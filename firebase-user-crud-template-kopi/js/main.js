@@ -33,12 +33,34 @@ userRef.onSnapshot(function(snapshotData) {
 // append users to the DOM
 function appendUsers(users) {
   console.log(users);
+  let template = "";
+  for (const user of users) {
+template += /*html*/ `
+<article>
+  <h2>${user.name}</h2>
+  <p><a href="mailto:${user.mail}">${user.mail}"</a></p>
+  <button onclick="selectUser('${user.id}','${user.name}','${user.mail}')">Update</button>
+  <button onclick="deleteUser('${user.id}')">Delete</button>
+  </article>
+`;
+  }
+  document.getElementById("content").innerHTML = template;
 }
 
 // ========== CREATE ==========
 // add a new user to firestore (database)
 function createUser() {
+let nameInput = document.getElementById("name");
+let mailInput = document.getElementById("mail");
 
+let newUser = {
+  name: nameInput.value,
+  mail: mailInput.value
+}
+
+userRef.add(newUser);
+nameInput.value = "";
+mailInput.value = "";
 }
 
 // ========== UPDATE ==========
