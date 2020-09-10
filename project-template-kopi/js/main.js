@@ -1,6 +1,6 @@
 class Teacher {
 
-constructor(name, initials) {
+constructor(name, initials, department, img, age) {
   this.name = name;
   this.initials = initials;
   this.department = department;
@@ -23,11 +23,11 @@ Image Url: ${this.img}
 }
 
 sayHi (){
-    alert(`Hi ${this.name}`);
+    alert(`Hi ${this.name}`)
   }
 
   append(containerId){
-    let tempale = /*html*/`
+    let template = /*html*/`
     <article>
       <h2> ${this.name}</h2>
       <p><a href ="mailto:${this.getMail()}">${this.getMail()}</a></p>
@@ -42,16 +42,19 @@ let teacher1 = new Teacher ("Birgitte", "bki", "Mulitimediedesign", "https://www
 console.log(teacher1);
 teacher1.department = "Web Development";
 console.log(teacher1.getMail());
+teacher1.append("content");
 
 let teacher2 = new Teacher ("Rasmus", "race", "Mulitimediedesign", "https://cederdorff.com/img/rasmus.jpg", "30 years old");
 console.log(teacher2);
 teacher2.department = "Web Development";
 console.log(teacher2.getMail());
+teacher2.append("content");
 
 let teacher3 = new Teacher ("Martin", "race", "Mulitimediedesign", "https://cederdorff.com/img/rasmus.jpg", "30 years old");
 console.log(teacher3);
 teacher3.department = "Web Development";
 console.log(teacher3.getMail());
+teacher3.append("content");
 
 
 console.log(teacher1)
