@@ -15,5 +15,5 @@ movieService.getMoviesByCategory(id);
 }
 
 window.search = function (searchValue) {
-
+movieService.search(searchValue);
 }
