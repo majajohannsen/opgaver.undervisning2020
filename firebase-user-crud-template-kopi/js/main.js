@@ -1,14 +1,15 @@
 "use strict";
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyBAnIrbdeQLbwO3MY7lyD_75HfKJH12-pA",
-  authDomain: "user-crud-a48d3.firebaseapp.com",
-  databaseURL: "https://user-crud-a48d3.firebaseio.com",
-  projectId: "user-crud-a48d3",
-  storageBucket: "user-crud-a48d3.appspot.com",
-  messagingSenderId: "78474489693",
-  appId: "1:78474489693:web:af9d0ca257a501437282b4"
+var firebaseConfig = {
+  apiKey: "AIzaSyBe0Lk3qwX3e71JBYw4VP-wHfJc8AWol4g",
+  authDomain: "fir-2020-70d61.firebaseapp.com",
+  databaseURL: "https://fir-2020-70d61.firebaseio.com",
+  projectId: "fir-2020-70d61",
+  storageBucket: "fir-2020-70d61.appspot.com",
+  messagingSenderId: "947284176349",
+  appId: "1:947284176349:web:53aa160a8b7029dab91a34",
+  measurementId: "G-F2CGPN25HW"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

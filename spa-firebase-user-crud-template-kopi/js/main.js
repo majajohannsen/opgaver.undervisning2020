@@ -55,6 +55,14 @@ function createUser() {
   // TODO: create a new object called newUser with the properties: name, mail & img. Add newUser to _userRef (cloud firestore)
   // make sure to nagivate to home: navigateTo("home");
 
+  let newUser = {
+    name: nameVal,
+    mail: mailVal,
+    img: imageSrc
+  };
+
+  _userRef.add(newUser);
+  navigateTo("home");
 }
 
 // ========== UPDATE ==========
@@ -78,7 +86,17 @@ function updateUser() {
 
   // TODO: create a userToUpdate object and update _userRef (cloud firestore)
   // make sure to nagivate to home
+
+  let userToUpdate = {
+    name: nameInput.value,
+    mail: mailInput.value,
+    img: imageInput.src
+  }
+
+  _userRef.add(selectedUserId).update(userToUpdate);
+  navigateTo("home");
 }
+  
 
 // ========== DELETE ==========
 function deleteUser(id) {
