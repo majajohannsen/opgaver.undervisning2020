@@ -93,7 +93,7 @@ function updateUser() {
     img: imageInput.src
   }
 
-  _userRef.add(selectedUserId).update(userToUpdate);
+  _userRef.add(_selectedUserId).update(userToUpdate);
   navigateTo("home");
 }
   
