@@ -3,12 +3,32 @@
 let app = new Vue({
   el: '#app',
   data: {
-    message: 'Hello Vue!',
-    text: 'Tryout the double databinding!'
+todos:[{
+  text:"Jeg skal vaske tøj"
+},
+{
+text:"Jeg skal arbejde hjemmefra"
   },
-  methods: {
-    changeMessage() {
-      this.message = 'Vue is awesome!'
+  {
+  text:"Jeg skal blive færdig med Vue.js projekt inden weekend"
+},
+{
+  text:"Jeg skal huske at slappe af"
+},
+{
+  text:"Jeg skal i fitness"
+}
+],
+newTodo:{
+  text:''
+},
+  },
+  methods:{
+    addTodo() {
+      this.todos.push(this.newTodo);
+      this.newTodo = {
+        text: ''
+      };
     }
   }
 });

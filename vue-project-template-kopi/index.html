@@ -13,13 +13,24 @@
 
   <body>
     <!-- Vue App Start -->
-    <div id="app">
-      <h1>{{ message }} </h1>
-      <button v-on:click="changeMessage">Hit me</button>
+  <div id="app">
 
-      <h2>{{text}}</h2>
-      <input v-model="text">
-    </div>
+<h1>My To Do List</h1>
+
+<ol>
+<li v-for="todo in todos">
+  {{ todo.text }}
+</li>
+</ol>
+
+<input v-model="newTodo.text" placeholder="Skriv ny to do">
+<button type="button" v-on:click="addTodo">Add</button>
+
+  </div> 
+
+
+
+
     <!-- Vue App End -->
     <!-- Vue.js, development version, includes helpful console warnings -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
